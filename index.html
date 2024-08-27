@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="cityInput" placeholder="Search for places ...">
+            <button id="getWeather"><img src="search-icon.png" alt="Search"></button>
+        </div>
+        <div class="main-weather">
+            <div class="current-weather">
+                <div class="weather-icon">
+                    <img id="weatherIcon" src="" alt="Weather Icon">
+                </div>
+                <div class="temperature">
+                    <span id="temperature">--°C</span>
+                </div>
+                <div id="live-time" class="live-time">--</div> <!-- Live time element -->
+                <div class="weather-info">
+                    <p id="condition">--</p>
+                    <p id="rain-chance">Rain - 0%</p>
+                </div>
+                <div class="location">
+                    <p id="location">City, Country</p>
+                </div>
+            </div>
+            
+            <div class="weekly-forecast">
+                <div id="forecast" class="forecast-container">
+                    <!-- Placeholder for weekly forecast -->
+                </div>
+            </div>
+        </div>
+        <div class="highlights">
+            <h2>Today's Highlights</h2>
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <p>UV Index</p>
+                    <div class="highlight-value" id="uv-index">--</div>
+                </div>
+                <div class="highlight-item">
+                    <p>Wind Status</p>
+                    <div class="highlight-value" id="wind-status">-- km/h</div>
+                </div>
+                <div class="highlight-item">
+                    <p>Sunrise & Sunset</p>
+                    <div class="highlight-value">
+                        <p id="sunrise">--</p>
+                        <p id="sunset">--</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <p>Humidity</p>
+                    <div class="highlight-value" id="humidity">--%</div>
+                </div>
+                <div class="highlight-item">
+                    <p>Visibility</p>
+                    <div class="highlight-value" id="visibility">-- km</div>
+                </div>
+                <div class="highlight-item">
+                    <p>Air Quality</p>
+                    <div class="highlight-value" id="air-quality">--</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
