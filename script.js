@@ -1,5 +1,4 @@
-let timeInterval; 
-
+let timeInterval;
 
 function fetchWeather(lat, lon, city = null) {
     const apiKey = '75fbc5b159324f538b7155020242608';
@@ -27,7 +26,14 @@ function fetchWeather(lat, lon, city = null) {
             const location = document.getElementById('location');
             const timeZone = data.location.tz_id; // Get the time zone ID
 
-            weatherIcon.src = `https:${data.current.condition.icon}`;
+            const iconUrl = `https:${data.current.condition.icon}`;
+            weatherIcon.src = iconUrl;
+
+            // Handle cases where the image fails to load
+            weatherIcon.onerror = function() {
+                this.style.display = 'none'; // Hide the icon if it fails to load
+            };
+
             temperature.textContent = `${data.current.temp_c}°C`;
             condition.textContent = data.current.condition.text;
             rainChance.textContent = `Rain - ${data.forecast.forecastday[0].day.daily_chance_of_rain}%`;
