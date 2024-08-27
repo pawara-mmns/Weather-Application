@@ -1,5 +1,5 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif; 
     background-color: #f0f4f8;
     margin: 0;
     padding: 0;
@@ -8,7 +8,18 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow-y: auto;
-    color: #1e293b; /* Text color */
+    color: #1e293b; 
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+p, input, button {
+    font-weight: 400; 
+}
+
+.button {
+    font-weight: 500; 
 }
 
 .container {
@@ -50,10 +61,12 @@ body {
     border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif; 
 }
 
 .search-bar button:hover {
-    background-color: #3b82f6;
+    background-color: #78fdf6;
 }
 
 .main-weather {
