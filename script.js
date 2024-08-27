@@ -1,6 +1,6 @@
-let timeInterval; // Declare a variable to store the interval ID
+let timeInterval; 
 
-// Function to fetch and display weather details for the provided location
+
 function fetchWeather(lat, lon, city = null) {
     const apiKey = '75fbc5b159324f538b7155020242608';
     let apiUrl = '';
@@ -89,8 +89,8 @@ function updateLiveTime(timeZone) {
         timeElement.textContent = now.toLocaleTimeString('en-US', options);
     }
 
-    updateTime(); // Initial call to set the time immediately
-    timeInterval = setInterval(updateTime, 1000); // Update every second, store interval ID
+    updateTime(); 
+    timeInterval = setInterval(updateTime, 1000); 
 }
 
 // Function to get user's current location and fetch weather data
