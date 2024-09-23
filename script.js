@@ -1,4 +1,25 @@
 let timeInterval;
+let map;
+let marker;
+
+function initMap() {
+   
+    const defaultLocation = { lat: 40.7128, lng: -74.0060 };
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: defaultLocation,
+        zoom: 10
+    });
+    marker = new google.maps.Marker({
+        position: defaultLocation,
+        map: map
+    });
+}
+
+function updateMap(lat, lon) {
+    const newPosition = { lat: lat, lng: lon };
+    map.setCenter(newPosition);
+    marker.setPosition(newPosition);
+}
 
 function fetchWeather(lat, lon, city = null) {
     const apiKey = '75fbc5b159324f538b7155020242608';
@@ -24,12 +45,11 @@ function fetchWeather(lat, lon, city = null) {
             const condition = document.getElementById('condition');
             const rainChance = document.getElementById('rain-chance');
             const location = document.getElementById('location');
-            const timeZone = data.location.tz_id; 
+            const timeZone = data.location.tz_id;
 
             const iconUrl = `https:${data.current.condition.icon}`;
             weatherIcon.src = iconUrl;
 
-        
             weatherIcon.onerror = function() {
                 this.style.display = 'none';
             };
@@ -39,15 +59,14 @@ function fetchWeather(lat, lon, city = null) {
             rainChance.textContent = `Rain - ${data.forecast.forecastday[0].day.daily_chance_of_rain}%`;
             location.textContent = `${data.location.name}, ${data.location.country}`;
 
-            // Clear any previous time intervals
+           
             if (timeInterval) {
                 clearInterval(timeInterval);
             }
 
-            // Display live time for the location
+         
             updateLiveTime(timeZone);
 
-            // Set highlights
             document.getElementById('uv-index').textContent = data.current.uv;
             document.getElementById('wind-status').textContent = `${data.current.wind_kph} km/h`;
             document.getElementById('sunrise').textContent = data.forecast.forecastday[0].astro.sunrise;
@@ -56,7 +75,7 @@ function fetchWeather(lat, lon, city = null) {
             document.getElementById('visibility').textContent = `${data.current.vis_km} km`;
             document.getElementById('air-quality').textContent = data.current.air_quality.pm2_5 > 100 ? 'Unhealthy' : 'Normal';
 
-            // Set weekly forecast
+          
             const forecast = data.forecast.forecastday;
             let forecastHTML = '';
             forecast.forEach(day => {
@@ -69,6 +88,9 @@ function fetchWeather(lat, lon, city = null) {
                 `;
             });
             document.getElementById('forecast').innerHTML = forecastHTML;
+
+      
+            updateMap(data.location.lat, data.location.lon);
         })
         .catch(error => {
             console.error('Error fetching the weather data:', error);
@@ -76,7 +98,6 @@ function fetchWeather(lat, lon, city = null) {
         });
 }
 
-// Function to update live time for the specific time zone
 function updateLiveTime(timeZone) {
     const timeElement = document.getElementById('live-time');
     
@@ -95,11 +116,10 @@ function updateLiveTime(timeZone) {
         timeElement.textContent = now.toLocaleTimeString('en-US', options);
     }
 
-    updateTime(); 
-    timeInterval = setInterval(updateTime, 1000); 
+    updateTime();
+    timeInterval = setInterval(updateTime, 1000);
 }
 
-// Function to get user's current location and fetch weather data
 function getLocationAndWeather() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
@@ -115,13 +135,11 @@ function getLocationAndWeather() {
     }
 }
 
-// Event listener for search button
 document.getElementById('getWeather').addEventListener('click', function() {
     const city = document.getElementById('cityInput').value;
     fetchWeather(null, null, city);
 });
 
-// Automatically fetch weather data for the user's current location when the application is loaded
 window.onload = function() {
     getLocationAndWeather();
 };
