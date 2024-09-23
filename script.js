@@ -22,7 +22,7 @@ function updateMap(lat, lon) {
 }
 
 function fetchWeather(lat, lon, city = null) {
-    const apiKey = '75fbc5b159324f538b7155020242608';
+    const apiKey = '20e59ea554364b069d181907242309';
     let apiUrl = '';
 
     if (city) {
