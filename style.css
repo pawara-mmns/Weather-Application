@@ -19,7 +19,7 @@ body.dark-mode .search-bar {
 }
 
 body.dark-mode .search-bar input {
-    color: #e0e0e0;
+    color: #9c9c9c;
 }
 
 body.dark-mode .search-bar button {
@@ -57,8 +57,8 @@ body.dark-mode .live-time {
 }
 #theme-switcher {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 160px;
     padding: 10px 20px;
     background-color: #3498db;
     color: white;
@@ -339,4 +339,6 @@ p, input, button {
     .highlights-grid {
         grid-template-columns: 1fr;
     }
+    
+    
 }
