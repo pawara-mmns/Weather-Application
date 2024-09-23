@@ -143,3 +143,15 @@ document.getElementById('getWeather').addEventListener('click', function() {
 window.onload = function() {
     getLocationAndWeather();
 };
+const themeSwitcher = document.getElementById('theme-switcher');
+const body = document.body;
+
+
+const currentTheme = localStorage.getItem('theme') || 'light';
+body.classList.toggle('dark-mode', currentTheme === 'dark');
+
+themeSwitcher.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+    localStorage.setItem('theme', theme);
+});

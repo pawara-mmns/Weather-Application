@@ -1,3 +1,84 @@
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .container {
+    background-color: #16213e;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, 
+body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .search-bar {
+    background-color: #0f3460;
+}
+
+body.dark-mode .search-bar input {
+    color: #e0e0e0;
+}
+
+body.dark-mode .search-bar button {
+    background-color: #e94560;
+}
+
+body.dark-mode .search-bar button:hover {
+    background-color: #d13551;
+}
+
+body.dark-mode .temperature {
+    color: #e0e0e0;
+}
+
+body.dark-mode .weather-info p {
+    color: #b0b0b0;
+}
+
+body.dark-mode .location {
+    color: #e0e0e0;
+}
+
+body.dark-mode .forecast-item,
+body.dark-mode .highlight-item {
+    background-color: #0f3460;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .highlight-value {
+    color: #e0e0e0;
+}
+
+body.dark-mode .live-time {
+    color: #e0e0e0;
+}
+#theme-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#theme-switcher:hover {
+    background-color: #2980b9;
+}
+
+body.dark-mode #theme-switcher {
+    background-color: #e94560;
+}
+
+body.dark-mode #theme-switcher:hover {
+    background-color: #d13551;
+}
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f0f4f8;
