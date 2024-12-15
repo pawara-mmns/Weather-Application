@@ -22,7 +22,7 @@ function updateMap(lat, lon) {
 }
 
 function fetchWeather(lat, lon, city = null) {
-    const apiKey = '20e59ea554364b069d181907242309';
+    const apiKey = 'ed99a58e357445aa8bc113247240712';
     let apiUrl = '';
 
     if (city) {
@@ -30,6 +30,7 @@ function fetchWeather(lat, lon, city = null) {
     } else {
         apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lon}&days=7&aqi=yes&alerts=no`;
     }
+    
 
     fetch(apiUrl)
         .then(response => response.json())
@@ -39,7 +40,7 @@ function fetchWeather(lat, lon, city = null) {
                 return;
             }
 
-            // Set current weather
+           
             const weatherIcon = document.getElementById('weatherIcon');
             const temperature = document.getElementById('temperature');
             const condition = document.getElementById('condition');
@@ -64,7 +65,6 @@ function fetchWeather(lat, lon, city = null) {
                 clearInterval(timeInterval);
             }
 
-         
             updateLiveTime(timeZone);
 
             document.getElementById('uv-index').textContent = data.current.uv;
@@ -134,24 +134,23 @@ function getLocationAndWeather() {
         alert('Geolocation is not supported by this browser.');
     }
 }
-
+ getLocationAndWeather();
 document.getElementById('getWeather').addEventListener('click', function() {
     const city = document.getElementById('cityInput').value;
     fetchWeather(null, null, city);
 });
 
 window.onload = function() {
-    getLocationAndWeather();
+   
 };
-const themeSwitcher = document.getElementById('theme-switcher');
-const body = document.body;
 
 
-const currentTheme = localStorage.getItem('theme') || 'light';
-body.classList.toggle('dark-mode', currentTheme === 'dark');
 
-themeSwitcher.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
-    localStorage.setItem('theme', theme);
-});
+// const themeSwitcher = document.getElementById('theme-switcher');
+// const body = document.body;
+
+
+// const currentTheme = localStorage.getItem('theme') || 'light';
+// body.classList.toggle('dark-mode', currentTheme === 'dark');
+
+//
